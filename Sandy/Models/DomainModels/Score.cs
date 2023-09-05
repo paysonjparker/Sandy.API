@@ -1,4 +1,4 @@
-﻿namespace Sandy.Data.DataTransferObjects.ScoreDto
+﻿namespace Sandy.Models.DomainModels
 {
     public class Score
     {

@@ -1,6 +1,6 @@
-﻿using Sandy.Data.DomainModels;
+﻿using Sandy.Models.DomainModels;
 
-namespace Sandy.Data.DataTransferObjects.GolferDto
+namespace Sandy.Models.DataTransferObjects.GolferDto
 {
     public class Golfer
     {

@@ -1,4 +1,4 @@
-﻿namespace Sandy.Data.DomainModels
+﻿namespace Sandy.Models.DomainModels
 {
     public class Golfer
     {
@@ -14,8 +14,8 @@
                 if (scoreList.Count > 0 && scoreList.Count <= 3)
                 {
                     HandicapIndex = Scores.Min().Differential - 2;
-                } 
-                if(scoreList.Count == 4)
+                }
+                if (scoreList.Count == 4)
                 {
                     HandicapIndex = Scores.Min().Differential - 1;
                 }
@@ -25,7 +25,7 @@
                 }
                 if (scoreList.Count == 6)
                 {
-                    HandicapIndex = ((scoreList.ElementAt(0).Differential + scoreList.ElementAt(1).Differential) / 2) - 1;
+                    HandicapIndex = (scoreList.ElementAt(0).Differential + scoreList.ElementAt(1).Differential) / 2 - 1;
                 }
                 if (scoreList.Count == 7 || scoreList.Count == 8)
                 {
@@ -37,7 +37,7 @@
                 }
                 if (scoreList.Count >= 12 || scoreList.Count <= 14)
                 {
-                    HandicapIndex = (scoreList.ElementAt(0).Differential + scoreList.ElementAt(1).Differential 
+                    HandicapIndex = (scoreList.ElementAt(0).Differential + scoreList.ElementAt(1).Differential
                         + scoreList.ElementAt(2).Differential + scoreList.ElementAt(3).Differential) / 4;
                 }
                 if (scoreList.Count == 15 || scoreList.Count == 16)

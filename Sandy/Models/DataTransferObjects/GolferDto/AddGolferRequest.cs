@@ -1,4 +1,4 @@
-﻿namespace Sandy.Data.DataTransferObjects.GolferDto
+﻿namespace Sandy.Models.DataTransferObjects.GolferDto
 {
     public class AddGolferRequest
     {
