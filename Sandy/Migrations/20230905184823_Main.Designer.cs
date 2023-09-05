@@ -12,8 +12,8 @@ using Sandy.Data;
 namespace Sandy.Migrations
 {
     [DbContext(typeof(SandyDbContext))]
-    [Migration("20230905161901_init")]
-    partial class init
+    [Migration("20230905184823_Main")]
+    partial class Main
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace Sandy.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Sandy.Models.DataTransferObjects.GolferDto.Golfer", b =>
+            modelBuilder.Entity("Sandy.Models.DomainModels.Golfer", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,26 +47,6 @@ namespace Sandy.Migrations
                     b.ToTable("Golfers");
                 });
 
-            modelBuilder.Entity("Sandy.Models.DataTransferObjects.ScoreDto.Score", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<float>("Differential")
-                        .HasColumnType("real");
-
-                    b.Property<Guid>("GolferId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Total")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Scores");
-                });
-
             modelBuilder.Entity("Sandy.Models.DomainModels.Score", b =>
                 {
                     b.Property<Guid>("Id")
@@ -86,19 +66,19 @@ namespace Sandy.Migrations
 
                     b.HasIndex("GolferId");
 
-                    b.ToTable("Score");
+                    b.ToTable("Scores");
                 });
 
             modelBuilder.Entity("Sandy.Models.DomainModels.Score", b =>
                 {
-                    b.HasOne("Sandy.Models.DataTransferObjects.GolferDto.Golfer", null)
+                    b.HasOne("Sandy.Models.DomainModels.Golfer", null)
                         .WithMany("Scores")
                         .HasForeignKey("GolferId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Sandy.Models.DataTransferObjects.GolferDto.Golfer", b =>
+            modelBuilder.Entity("Sandy.Models.DomainModels.Golfer", b =>
                 {
                     b.Navigation("Scores");
                 });
