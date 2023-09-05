@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandy", "Sandy\Sandy.csproj", "{713F20CF-6CA7-4C70-AADF-BDD22B4F8005}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandy.API", "Sandy\Sandy.API.csproj", "{713F20CF-6CA7-4C70-AADF-BDD22B4F8005}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
