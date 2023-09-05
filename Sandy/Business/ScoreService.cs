@@ -1,5 +1,6 @@
 ﻿using Sandy.Data;
 using Sandy.Models.DataTransferObjects.ScoreDto;
+using Sandy.Models.DomainModels;
 
 namespace Sandy.Business
 {

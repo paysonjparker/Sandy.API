@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sandy.Models.DataTransferObjects.GolferDto;
-using Sandy.Models.DataTransferObjects.ScoreDto;
+using Sandy.Models.DomainModels;
 
 namespace Sandy.Data
 {

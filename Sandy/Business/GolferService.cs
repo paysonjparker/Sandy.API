@@ -1,6 +1,6 @@
 ﻿using Sandy.Data;
 using Sandy.Models.DataTransferObjects.GolferDto;
-using Sandy.Models.DataTransferObjects.ScoreDto;
+using Sandy.Models.DomainModels;
 
 namespace Sandy.Business
 {
@@ -42,7 +42,7 @@ namespace Sandy.Business
                     Name = golfer.Name,
                     HandicapIndex = CalculateHandicapIndex(golfer.Id),
                     HomeCourse = golfer.HomeCourse,
-                    Scores = (ICollection<Models.DomainModels.Score>)scoreService.GetAllScoresByGolfer(golfer.Id),
+                    Scores = scoreService.GetAllScoresByGolfer(golfer.Id),
                 });
             }
 
@@ -63,7 +63,7 @@ namespace Sandy.Business
                     Name = golferDomainObject.Name,
                     HandicapIndex = CalculateHandicapIndex(golferDomainObject.Id),
                     HomeCourse = golferDomainObject.HomeCourse,
-                    Scores = (ICollection<Models.DomainModels.Score>)scoreService.GetAllScoresByGolfer(golferDomainObject.Id),
+                    Scores = scoreService.GetAllScoresByGolfer(golferDomainObject.Id),
                 };
 
                 return golferDTO;
@@ -108,32 +108,36 @@ namespace Sandy.Business
             var scoreService = new ScoreService(_dbContext);
 
             var scoreList = scoreService.GetAllScoresByGolfer(golferId);
-            scoreList.OrderBy(score => score.Differential);
-            if (scoreList.Count > 0 && scoreList.Count <= 3)
+            scoreList = scoreList.OrderBy(score => score.Differential).ToList();
+            if (scoreList.Count == 1)
             {
-                return scoreList.Min().Differential - 2;
+                return scoreList.ElementAt(0).Differential - 2;
+            }
+            if (scoreList.Count == 2 || scoreList.Count == 3)
+            {
+                return scoreList.ElementAt(0).Differential - 2;
             }
             if (scoreList.Count == 4)
             {
-                return scoreList.Min().Differential - 1;
+                return scoreList.ElementAt(0).Differential - 1;
             }
             if (scoreList.Count == 5)
             {
-                return scoreList.Min().Differential;
+                return scoreList.ElementAt(0).Differential;
             }
             if (scoreList.Count == 6)
             {
-                return (scoreList.ElementAt(0).Differential + scoreList.ElementAt(1).Differential) / 2 - 1;
+                return ((scoreList.ElementAt(0).Differential + scoreList.ElementAt(1).Differential) / 2) - 1;
             }
             if (scoreList.Count == 7 || scoreList.Count == 8)
             {
                 return (scoreList.ElementAt(0).Differential + scoreList.ElementAt(1).Differential) / 2;
             }
-            if (scoreList.Count >= 9 || scoreList.Count <= 11)
+            if (scoreList.Count >= 9 && scoreList.Count <= 11)
             {
                 return (scoreList.ElementAt(0).Differential + scoreList.ElementAt(1).Differential + scoreList.ElementAt(2).Differential) / 3;
             }
-            if (scoreList.Count >= 12 || scoreList.Count <= 14)
+            if (scoreList.Count >= 12 && scoreList.Count <= 14)
             {
                 return (scoreList.ElementAt(0).Differential + scoreList.ElementAt(1).Differential
                     + scoreList.ElementAt(2).Differential + scoreList.ElementAt(3).Differential) / 4;
@@ -164,6 +168,7 @@ namespace Sandy.Business
                     + scoreList.ElementAt(4).Differential + scoreList.ElementAt(5).Differential
                     + scoreList.ElementAt(6).Differential + scoreList.ElementAt(7).Differential) / 8;
             }
+            
             return 0;
         }
     }
