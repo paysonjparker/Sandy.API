@@ -40,7 +40,7 @@ namespace Sandy.Business
                 {
                     Id = golfer.Id,
                     Name = golfer.Name,
-                    HandicapIndex = CalculateHandicapIndex(golfer.Id),
+                    HandicapIndex = (float)Math.Round(CalculateHandicapIndex(golfer.Id), 1),
                     HomeCourse = golfer.HomeCourse,
                     Scores = scoreService.GetAllScoresByGolfer(golfer.Id),
                 });
@@ -61,7 +61,7 @@ namespace Sandy.Business
                 {
                     Id = golferDomainObject.Id,
                     Name = golferDomainObject.Name,
-                    HandicapIndex = CalculateHandicapIndex(golferDomainObject.Id),
+                    HandicapIndex = (float)Math.Round(CalculateHandicapIndex(golferDomainObject.Id), 1),
                     HomeCourse = golferDomainObject.HomeCourse,
                     Scores = scoreService.GetAllScoresByGolfer(golferDomainObject.Id),
                 };
