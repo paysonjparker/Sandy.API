@@ -33,7 +33,7 @@ namespace Sandy.Controllers
         {
             var scores = _scoreService.GetAllScoresByGolfer(golferId);
 
-            scores = scores.OrderByDescending(x => x.Id).ToList();
+            scores.Reverse();
 
             return Ok(scores);
         }

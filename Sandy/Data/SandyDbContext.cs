@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Sandy.API.Models.DomainModels;
 using Sandy.Models.DomainModels;
 
 namespace Sandy.Data
@@ -11,5 +12,7 @@ namespace Sandy.Data
         }
         public DbSet<Golfer> Golfers { get; set; }
         public DbSet<Score> Scores { get; set; }
+        public DbSet<GolfCourse> GolfCourses { get; set; }
+
     }
 }

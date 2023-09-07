@@ -9,11 +9,11 @@ using Sandy.Data;
 
 #nullable disable
 
-namespace Sandy.Migrations
+namespace Sandy.API.Migrations
 {
     [DbContext(typeof(SandyDbContext))]
-    [Migration("20230905184823_Main")]
-    partial class Main
+    [Migration("20230907150826_initttt")]
+    partial class initttt
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,33 @@ namespace Sandy.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Sandy.API.Models.DomainModels.GolfCourse", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<float>("CourseRating")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Par")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SlopeRating")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Yardage")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GolfCourses");
+                });
 
             modelBuilder.Entity("Sandy.Models.DomainModels.Golfer", b =>
                 {

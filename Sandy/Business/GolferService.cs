@@ -108,6 +108,11 @@ namespace Sandy.Business
             var scoreService = new ScoreService(_dbContext);
 
             var scoreList = scoreService.GetAllScoresByGolfer(golferId);
+            scoreList.Reverse();
+            if(scoreList.Count > 20)
+            {
+                scoreList = scoreList.Take(20).ToList();
+            }
             scoreList = scoreList.OrderBy(score => score.Differential).ToList();
             if (scoreList.Count == 1)
             {
