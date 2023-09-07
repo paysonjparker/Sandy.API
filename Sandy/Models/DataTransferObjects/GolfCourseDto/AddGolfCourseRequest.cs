@@ -1,10 +1,9 @@
-﻿namespace Sandy.API.Models.DomainModels
+﻿namespace Sandy.API.Models.DataTransferObjects.GolfCourseDto
 {
-    public class GolfCourse
+    public class AddGolfCourseRequest
     {
-        public Guid Id { get; set; }
-        public string Location { get; set; }
         public string Name { get; set; }
+        public string Location { get; set; }
         public int SlopeRating { get; set; }
         public float CourseRating { get; set; }
         public int Yardage { get; set; }

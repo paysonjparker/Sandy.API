@@ -12,8 +12,8 @@ using Sandy.Data;
 namespace Sandy.API.Migrations
 {
     [DbContext(typeof(SandyDbContext))]
-    [Migration("20230907150826_initttt")]
-    partial class initttt
+    [Migration("20230907152620_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,10 @@ namespace Sandy.API.Migrations
 
                     b.Property<float>("CourseRating")
                         .HasColumnType("real");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()

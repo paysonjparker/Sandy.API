@@ -31,6 +31,10 @@ namespace Sandy.API.Migrations
                     b.Property<float>("CourseRating")
                         .HasColumnType("real");
 
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
