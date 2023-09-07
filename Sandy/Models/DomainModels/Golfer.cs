@@ -1,4 +1,7 @@
-﻿namespace Sandy.Models.DomainModels
+﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
+
+namespace Sandy.Models.DomainModels
 {
     public class Golfer
     {
